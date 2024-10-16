@@ -14,7 +14,7 @@ const user: User = {
   firstname: 'Valentino',
   lastname: 'Valdebenito',
   username: 'test',
-  password: 'test',
+  password: '1234',
   isAdmin: true,
   refreshTokens: []
 }
@@ -114,7 +114,9 @@ function fakeBackend() {
 
       // funciona para obtener usuarios, controla  si el usuario está logueado
       function getUsers() {
-        if (!isLoggedIn()) return unauthorized()
+        if (!isLoggedIn()) {
+          return unauthorized()
+        }
         return ok(users)
       }
 
