@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: Roboto, sans-serif;
+  background-image: url('background.jpg');
+  background-size: cover; /* Opcional, ajusta la imagen */
+  background-repeat: no-repeat; /* Opcional, evita que la imagen se repita */
+  background-position: center; /* Opcional, centra la imagen */
+}
