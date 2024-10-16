@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import type { User } from '@/models/User.model'
-import { useUserStore } from '@/stores/userStore'
 import { useAuthStore } from '@/stores/authStore'
-import { reactive } from 'vue'
+import { fetchWrapper } from '@/helpers/fetchWrapper'
+import { reactive, ref } from 'vue'
+import { useUserStore } from '@/stores/userStore'
+import type { User } from '@/models/User.model'
 
 const authStore = useAuthStore()
-const user: User = reactive<User>(useUserStore().user)
+//const user: User = reactive<User>(useUserStore().user)
+const user = authStore.auth.data ? { ...authStore.auth.data } : null
+console.log('User', user)
 
 function logout() {
   authStore.logout()
@@ -16,10 +19,13 @@ function logout() {
   <div id="container">
     <div id="user-card">
       <div id="info">
-        <span>Nombre: {{ user.firstname }}</span>
-        <span>Apellido: {{ user.lastname }}</span>
-        <span>Usuario: {{ user.username }}</span>
-        <span>Admin: {{ user.isAdmin }}</span>
+        <span>id: {{ user?.id }}</span>
+        <span>Nombre: {{ user?.firstname }}</span>
+        <span>Apellido: {{ user?.lastname }}</span>
+        <span>Usuario: {{ user?.username }}</span>
+        <span>Pass: {{ user?.password }}</span>
+        <span>Admin: {{ user?.isAdmin }}</span>
+        <span>JWT: {{ user?.jsonWebToken }}</span>
       </div>
       <div id="button">
         <button @click="logout">Logout</button>

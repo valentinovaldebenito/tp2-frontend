@@ -45,7 +45,6 @@ function handleSubmit(values: any, { setErrors }: any) {
     <div id="card">
       <h1>Login</h1>
       <Form @submit="handleSubmit" :validation-schema="schema" v-slot="{ errors, isSubmitting }" id="loginForm">
-        <div v-if="errors.apiError" class="error-alert">{{ errors.apiError }}</div>
         <div class="input-box">
           <div class="input-div">
             <Field name="username" type="text" :class="{ 'is-invalid': errors.username || errors.apiError }" placeholder="Usuario" required />
@@ -75,6 +74,7 @@ function handleSubmit(values: any, { setErrors }: any) {
             <p v-show="isSubmitting" class="loader"></p>
           </button>
         </div>
+        <div v-if="errors.apiError" class="error-alert">{{ errors.apiError }}</div>
       </Form>
     </div>
   </div>
@@ -97,11 +97,12 @@ function handleSubmit(values: any, { setErrors }: any) {
 }
 
 .error-alert {
-  z-index: 2;
-  padding: 5px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 0, 0, 0.596);
-  color: rgba(255, 0, 0, 0.596);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 5px;
+  color: rgba(255, 25, 25, 0.962);
 }
 
 .rem-for {
